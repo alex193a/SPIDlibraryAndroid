@@ -106,7 +106,11 @@ class SpidDialogFragment : DialogFragment() {
                 if (url.equals(spidConfig.callbackPageUrl, ignoreCase = true)) {
                     cancelSessionTimeoutTask()
                     dismiss()
-                    spidCallback.onSpidSuccess(SpidResponse(getCookiesList()))
+                    if (getCookiesList().isNotEmpty()) {
+                        spidCallback.onSpidSuccess(SpidResponse(getCookiesList()))
+                    } else {
+                        spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
+                    }
                 } else {
                     startSessionTimeoutTask(true)
                 }
