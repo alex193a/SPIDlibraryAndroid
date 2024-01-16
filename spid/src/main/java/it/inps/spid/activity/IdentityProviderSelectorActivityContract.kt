@@ -27,9 +27,11 @@ class IdentityProviderSelectorActivityContract : ActivityResultContract<SpidPara
             SUCCESS -> {
                 SpidResult(
                     SpidEvent.SUCCESS,
+                    null
+                    /*
                     intent?.getSerializableExtra(
                         IdentityProviderSelectorActivity.EXTRA_SPID_RESPONSE
-                    ) as SpidResponse
+                    ) as SpidResponse*/
                 )
             }
             GENERIC_ERROR -> SpidResult(SpidEvent.GENERIC_ERROR)
