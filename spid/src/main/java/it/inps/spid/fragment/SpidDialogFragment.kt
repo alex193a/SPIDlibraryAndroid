@@ -182,7 +182,11 @@ class SpidDialogFragment : DialogFragment() {
         if (!isAdded) {
             Log.e("SpidDialogFragment", "addCookies(): Fragment not attached to an activity")
             cancelSessionTimeoutTask()
-            dismiss()
+            try {
+                dismissAllowingStateLoss()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
             spidCallback.onSpidFailure(SpidEvent.GENERIC_ERROR)
             return
         }
