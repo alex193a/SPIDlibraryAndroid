@@ -233,7 +233,7 @@ class SpidDialogFragment : DialogFragment() {
             spidCallback.onSpidFailure(SpidEvent.SESSION_TIMEOUT)
         }
     }
-
+    
     private fun cancelSessionTimeoutTask() {
         lifecycleScope.coroutineContext.cancelChildren()
     }
